@@ -21,3 +21,7 @@ dap.configurations.python = {
         args = {'runserver', '--noreload'},
     }
 }
+
+vim.keymap.set("n", "<leader>dt", ":DapToggleBreakpoint<CR>")
+vim.keymap.set("n", "<leader>dr", ":DapToggleRepl<CR>")
+vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>")
