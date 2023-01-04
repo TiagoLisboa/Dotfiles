@@ -6,3 +6,5 @@ ln -s $(pwd)/nvim ~/.config/nvim
 rm -rf ~/.tmux.conf
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 
+rm -rf ~/.config/fish
+ln -s $(pwd)/fish ~/.config/fish
