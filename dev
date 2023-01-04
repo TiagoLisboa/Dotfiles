@@ -3,3 +3,6 @@
 rm -rf ~/.config/nvim
 ln -s $(pwd)/nvim ~/.config/nvim
 
+rm -rf ~/.tmux.conf
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+
