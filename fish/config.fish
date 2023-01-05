@@ -3,3 +3,6 @@ if status is-interactive
 end
 
 source ~/.asdf/asdf.fish
+
+alias ls="exa"
+alias cat="bat"
