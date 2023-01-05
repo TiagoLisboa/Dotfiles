@@ -1,8 +1,10 @@
 rm -rf ~/.config/nvim
 ln -s $(pwd)/nvim ~/.config/nvim
+nvim --headless +PackerInstall +q
 
 rm -rf ~/.tmux.conf
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 rm -rf ~/.config/fish
 ln -s $(pwd)/fish ~/.config/fish
