@@ -2,6 +2,7 @@
 
 sudo pacman -Syyuu
 sudo pacman -S --needed git base-devel go
+sudo pacman -S exa bat bashtop ripgrep tldr ncdu fd
 
 cd ~
 rm -rf ~/dotfiles

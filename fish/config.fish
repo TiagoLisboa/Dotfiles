@@ -6,3 +6,7 @@ source ~/.asdf/asdf.fish
 
 alias ls="exa"
 alias cat="bat"
+alias top="bashtop"
+alias grep="rp"
+alias df="ncdu"
+alias find="fd"
