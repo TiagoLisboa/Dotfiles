@@ -72,4 +72,11 @@ return require('packer').startup(function(use)
         requires = "neovim/nvim-lspconfig"
     }
     use('f-person/git-blame.nvim')
+    use {
+        'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        end
+    }
+    use 'echasnovski/mini.ai'
 end)
