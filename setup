@@ -41,7 +41,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 rm -rf ~/.config/nvim
 ln -s $(pwd)/nvim ~/.config/nvim
-nvim --headless +PackerInstall +q
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 rm -rf ~/.tmux.conf
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
