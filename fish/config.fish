@@ -7,7 +7,7 @@ source ~/.asdf/asdf.fish
 alias ls="exa"
 # alias cat="bat"
 alias top="bashtop"
-alias grep="rp"
+alias grep="rg"
 alias df="ncdu"
 alias find="fd"
 alias sail="./vendor/bin/sail"
