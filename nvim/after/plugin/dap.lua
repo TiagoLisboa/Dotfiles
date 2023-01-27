@@ -1,15 +1,18 @@
 local dap = require('dap')
-local handle = io.popen("pipenv run which python")
-local result = handle:read("*a")
-result = result:sub(1, -2)
-handle:close()
-print(result)
-dap.set_log_level('TRACE')
+local result = 'python'
+
+if io.open('Pipfile')
+then
+    local handle = io.popen("pipenv run which python")
+    result = handle:read("*a")
+    result = result:sub(1, -2)
+    handle:close()
+end
 
 dap.adapters.python = {
-  type = 'executable';
-  command = result;
-  args = { '-m', 'debugpy.adapter' };
+    type = 'executable';
+    command = result;
+    args = { '-m', 'debugpy.adapter' };
 }
 
 dap.configurations.python = {
