@@ -84,6 +84,16 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["alpha-nvim"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
+  },
+  catppuccin = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -109,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codeium.vim"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/codeium.vim",
+    url = "https://github.com/Exafunction/codeium.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -118,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   harpoon = {
     loaded = true,
@@ -154,6 +174,11 @@ _G.packer_plugins = {
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.ai"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/mini.ai",
+    url = "https://github.com/echasnovski/mini.ai"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -183,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/tiago/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = false,

@@ -83,4 +83,5 @@ return require('packer').startup(function(use)
     }
     use 'Exafunction/codeium.vim'
     use { "catppuccin/nvim", as = "catppuccin" }
+    use 'christoomey/vim-tmux-navigator'
 end)
