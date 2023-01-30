@@ -11,3 +11,5 @@ alias grep="rg"
 alias df="ncdu"
 alias find="fd"
 alias sail="./vendor/bin/sail"
+
+set NNN_FIFO /tmp/nnn.fifo
