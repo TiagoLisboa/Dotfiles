@@ -10,7 +10,7 @@ end
 require('lualine').setup({
     options = {
         --- @usage 'rose-pine' | 'rose-pine-alt'
-        theme = custom_rose_pine,
+        -- theme = custom_rose_pine,
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
     },
