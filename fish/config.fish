@@ -12,4 +12,7 @@ alias df="ncdu"
 alias find="fd"
 alias sail="./vendor/bin/sail"
 
-set NNN_FIFO /tmp/nnn.fifo
+set -gx NNN_FIFO /tmp/nnn.fifo
+set -Ux fish_tmux_autostart false
+set -Ux fish_tmux_autoconnect false
+
