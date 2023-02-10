@@ -13,6 +13,6 @@ alias find="fd"
 alias sail="./vendor/bin/sail"
 
 set -gx NNN_FIFO /tmp/nnn.fifo
-set -Ux fish_tmux_autostart true
+set -Ux fish_tmux_autostart false
 set -Ux fish_tmux_autoconnect false
 
