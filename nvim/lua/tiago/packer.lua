@@ -81,7 +81,18 @@ return require('packer').startup(function(use)
         'lewis6991/gitsigns.nvim',
         tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
     }
-    use 'Exafunction/codeium.vim'
+    use {
+        "jcdickinson/codeium.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            require("codeium").setup({
+            })
+        end
+    }
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'christoomey/vim-tmux-navigator'
 end)
