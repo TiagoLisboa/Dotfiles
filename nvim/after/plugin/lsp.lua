@@ -4,8 +4,8 @@ local navic = require("nvim-navic")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
-  'eslint',
+  -- 'tsserver',
+  -- 'eslint',
   'lua_ls',
   'rust_analyzer',
 })
