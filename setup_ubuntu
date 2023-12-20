@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+sudo apt get update
+sudo apt get install git golang-go
+sudo apt get install neovim curl tmux fish
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+# asdf configuration
+rm -rf ~/.asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+mkdir -p ~/.config/fish/completions
+rm ~/.config/fish/completions/asdf.fish
+ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+. $HOME/.asdf/asdf.sh
+
+# setup nodejs with asdf
+~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+~/.asdf/bin/asdf install nodejs latest
+~/.asdf/bin/asdf global nodejs latest
+
+# install tpm
+rm -rf ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# install fisher
+/usr/bin/fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+
+rm -rf ~/.config/nvim
+ln -s $(pwd)/nvim ~/.config/nvim
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+rm -rf ~/.tmux.conf
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+rm -rf ~/.config/fish
+ln -s $(pwd)/fish ~/.config/fish
+

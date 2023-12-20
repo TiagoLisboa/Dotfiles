@@ -4,8 +4,8 @@ local navic = require("nvim-navic")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'lua_ls',
-  'rust_analyzer',
+    'lua_ls',
+    'rust_analyzer',
 })
 
 -- Fix Undefined global 'vim'
@@ -40,10 +40,10 @@ lsp.configure('efm', {
     flags = {
         debounce_text_changes = 150,
     },
-    init_options = {documentFormatting = true},
-    filetypes = {"python"},
+    init_options = { documentFormatting = true },
+    filetypes = { "python" },
     settings = {
-        rootMarkers = {".git/"},
+        rootMarkers = { ".git/" },
         -- languages = {
         --     python = {
         --         {formatCommand = "black --quiet -", formatStdin = true}
@@ -53,12 +53,12 @@ lsp.configure('efm', {
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 -- disable completion with tab
@@ -67,7 +67,7 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+    mapping = cmp_mappings
 })
 
 lsp.set_preferences({
@@ -81,7 +81,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
     lsp.buffer_autoformat()
 
     if client.name == "eslint" then
@@ -106,4 +106,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
-

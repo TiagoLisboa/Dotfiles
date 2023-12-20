@@ -74,4 +74,5 @@ return require('packer').startup(function(use)
     }
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'christoomey/vim-tmux-navigator'
+    use "stevearc/oil.nvim"
 end)
