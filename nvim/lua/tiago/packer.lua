@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
@@ -70,8 +70,7 @@ return require('packer').startup(function(use)
     }
     use 'echasnovski/mini.ai'
     use {
-        'lewis6991/gitsigns.nvim',
-        tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+        'lewis6991/gitsigns.nvim'
     }
     use { "catppuccin/nvim", as = "catppuccin" }
     use 'christoomey/vim-tmux-navigator'

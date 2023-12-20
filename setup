@@ -50,3 +50,6 @@ ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 rm -rf ~/.config/fish
 ln -s $(pwd)/fish ~/.config/fish
 
+rm -rf ~/.config/efm-langserver
+ln -s $(pwd)/efm-langserver ~/.config/efm-langserver
+
