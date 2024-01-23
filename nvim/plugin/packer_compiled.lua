@@ -137,7 +137,7 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/movida/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/theprimeagen/harpoon"
+    url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["lightspeed.nvim"] = {
     loaded = true,
@@ -243,7 +243,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
-    cond = { false },
+    cond = { true },
     loaded = false,
     needs_bufread = false,
     only_cond = true,
