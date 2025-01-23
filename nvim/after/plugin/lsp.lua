@@ -1,25 +1,45 @@
-local lsp = require("lsp-zero")
 local navic = require("nvim-navic")
+-- NOTE: to make any of this work you need a language server.
+-- If you don't know what that is, watch this 5 min video:
+-- https://www.youtube.com/watch?v=LaS32vctfOY
 
-lsp.preset("recommended")
+-- Reserve a space in the gutter
+vim.opt.signcolumn = 'yes'
 
-lsp.ensure_installed({
-  -- 'tsserver',
-  -- 'eslint',
-  'lua_ls',
-  'rust_analyzer',
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+-- This should be executed before you configure any language server
+local lspconfig_defaults = require('lspconfig').util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
+-- This is where you enable features that only work
+-- if there is a language server active in the file
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    local opts = {buffer = event.buf}
+
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+      vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+      vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+      vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+      vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+      vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
+      vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+      vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+  end,
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
+-- You'll find a list of language servers here:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+-- These are example language servers. 
+require('lspconfig').gleam.setup({})
+require('lspconfig').ocamllsp.setup({})
 
 local on_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
@@ -27,67 +47,32 @@ local on_attach = function(client, bufnr)
     end
 end
 
-lsp.configure('pyright', {
-    single_file_support = false,
-    on_attach = on_attach
-})
 
-lsp.configure('jsonls', {
-    single_file_support = false,
-    on_attach = on_attach
-})
+require'lspconfig'.basedpyright.setup{
+  on_attach = on_attach
+}
+
+require'lspconfig'.intelephense.setup{
+  on_attach = on_attach
+}
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  snippet = {
+    expand = function(args)
+      -- You need Neovim v0.10 to use vim.snippet
+      vim.snippet.expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  }),
 })
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
-
-lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
-      return
-  end
-
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-end)
-
-lsp.setup()
-
-vim.diagnostic.config({
-    virtual_text = true,
-})
-
