@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt update
-sudo apt install git golang-go
+sudo apt install git golang-go python3-venv composer
 sudo apt install neovim curl tmux fish npm 
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
