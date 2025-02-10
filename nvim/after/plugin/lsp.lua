@@ -49,7 +49,17 @@ end
 
 
 require'lspconfig'.basedpyright.setup{
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+    basedpyright = {
+      typeCheckingMode = "standard",
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+        useLibraryCodeForTypes = true
+      },
+    },
+  },
 }
 
 require'lspconfig'.intelephense.setup{
